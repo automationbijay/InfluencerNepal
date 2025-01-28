@@ -1,20 +1,25 @@
-import { Menu, X } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import { Menu, X } from 'lucide-react'
+
+const navItems = [
+  { id: 'home', label: 'Home' },
+  { id: 'how-it-works', label: 'How It Works' },
+  { id: 'success-stories', label: 'Success Stories' },
+  { id: 'about', label: 'About' },
+  { id: 'faq', label: 'FAQs' }
+]
 
 const Navbar = () => {
   const [activeSection, setActiveSection] = useState('home')
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-
-  const navItems = [
-    { id: 'home', label: 'Home' },
-    { id: 'how-it-works', label: 'How It Works' },
-    { id: 'success-stories', label: 'Success Stories' },
-    { id: 'about', label: 'About' },
-    { id: 'faq', label: 'FAQs' }
-  ]
+  const [isScrolled, setIsScrolled] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
+      // Update scroll state
+      setIsScrolled(window.scrollY > 0)
+
+      // Update active section
       const sections = document.querySelectorAll('section[id]')
       const scrollPosition = window.scrollY + 100
 
@@ -42,7 +47,9 @@ const Navbar = () => {
   }
 
   return (
-    <nav className="fixed top-0 w-full bg-white/90 backdrop-blur-sm shadow-lg z-50">
+    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${
+      isScrolled ? 'bg-white/90 backdrop-blur-sm shadow-lg' : 'bg-transparent'
+    }`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           <div className="flex-shrink-0">
@@ -56,8 +63,8 @@ const Navbar = () => {
                 <button
                   key={item.id}
                   onClick={() => handleNavClick(item.id)}
-                  className={`nav-link text-gray-700 hover:text-purple-600 transition-colors ${
-                    activeSection === item.id ? 'active' : ''
+                  className={`nav-link text-gray-700 hover:text-blue-600 transition-colors ${
+                    activeSection === item.id ? 'active text-blue-600' : ''
                   }`}
                 >
                   {item.label}
@@ -66,21 +73,17 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className="flex items-center gap-4">
-            <button className="gradient-bg text-white px-4 py-2 rounded-md hover:opacity-90 transition-opacity">
-              Register
-            </button>
-            <button 
-              className="md:hidden"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              {isMobileMenuOpen ? (
-                <X className="h-6 w-6 text-gray-700" />
-              ) : (
-                <Menu className="h-6 w-6 text-gray-700" />
-              )}
-            </button>
-          </div>
+          {/* Mobile menu button */}
+          <button 
+            className="md:hidden"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? (
+              <X className="h-6 w-6 text-gray-700" />
+            ) : (
+              <Menu className="h-6 w-6 text-gray-700" />
+            )}
+          </button>
         </div>
 
         {/* Mobile Menu */}
@@ -93,16 +96,13 @@ const Navbar = () => {
                   onClick={() => handleNavClick(item.id)}
                   className={`block w-full text-left px-3 py-2 rounded-md text-base font-medium ${
                     activeSection === item.id
-                      ? 'text-purple-600 bg-purple-50'
-                      : 'text-gray-700 hover:text-purple-600 hover:bg-purple-50'
+                      ? 'text-blue-600 bg-blue-50'
+                      : 'text-gray-700 hover:text-blue-600 hover:bg-blue-50'
                   }`}
                 >
                   {item.label}
                 </button>
               ))}
-              <button className="w-full gradient-bg text-white px-3 py-2 rounded-md hover:opacity-90 transition-opacity mt-4">
-                Register
-              </button>
             </div>
           </div>
         )}

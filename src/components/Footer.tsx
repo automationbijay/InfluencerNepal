@@ -1,27 +1,19 @@
-import { Twitter, Linkedin, Facebook, Instagram } from 'lucide-react'
+import { Phone, Mail, MapPin, Facebook, Instagram, Youtube } from 'lucide-react'
+
+const TiktokIcon = () => (
+  <svg 
+    viewBox="0 0 24 24" 
+    className="h-5 w-5"
+    fill="currentColor"
+  >
+    <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+  </svg>
+)
 
 const Footer = () => {
   return (
-    <footer className="relative bg-gradient-to-b from-gray-900 to-indigo-900 text-white">
-      {/* Minimalist Mountain Range Footer */}
-      <div className="absolute top-0 left-0 w-full overflow-hidden">
-        <svg 
-          className="relative w-full h-12"
-          viewBox="0 0 1200 120"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0 30 L200 10 L400 40 L600 0 L800 30 L1000 10 L1200 30 V120 H0 Z"
-            className="fill-purple-100/5"
-          />
-          <path
-            d="M0 40 L200 20 L400 50 L600 10 L800 40 L1000 20 L1200 40 V120 H0 Z"
-            className="fill-indigo-100/5"
-          />
-        </svg>
-      </div>
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative">
+    <footer className="bg-gradient-to-br from-gray-900 to-blue-900 text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid md:grid-cols-4 gap-8">
           <div>
             <h3 className="font-bold text-lg mb-4">INFLUENCERS NEPAL</h3>
@@ -39,18 +31,18 @@ const Footer = () => {
                 </a>
               </li>
               <li>
-                <a href="#blogs" className="text-gray-300 hover:text-white transition-colors">
-                  Blogs
+                <a href="#how-it-works" className="text-gray-300 hover:text-white transition-colors">
+                  How It Works
+                </a>
+              </li>
+              <li>
+                <a href="#success-stories" className="text-gray-300 hover:text-white transition-colors">
+                  Success Stories
                 </a>
               </li>
               <li>
                 <a href="#faq" className="text-gray-300 hover:text-white transition-colors">
                   FAQs
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="text-gray-300 hover:text-white transition-colors">
-                  Contact Us
                 </a>
               </li>
             </ul>
@@ -60,12 +52,22 @@ const Footer = () => {
             <h4 className="font-semibold mb-4">Legal</h4>
             <ul className="space-y-2">
               <li>
-                <a href="#terms" className="text-gray-300 hover:text-white transition-colors">
+                <a 
+                  href="https://www.termsfeed.com/live/328a69f8-bde7-49a8-8351-f332d16c4bd2" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-300 hover:text-white transition-colors"
+                >
                   Terms of Use
                 </a>
               </li>
               <li>
-                <a href="#privacy" className="text-gray-300 hover:text-white transition-colors">
+                <a 
+                  href="https://www.termsfeed.com/live/328a69f8-bde7-49a8-8351-f332d16c4bd2" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-300 hover:text-white transition-colors"
+                >
                   Privacy Policy
                 </a>
               </li>
@@ -74,20 +76,57 @@ const Footer = () => {
           
           <div>
             <h4 className="font-semibold mb-4">Connect</h4>
-            <p className="text-gray-300 mb-2">Tel: 01-2345678</p>
-            <p className="text-gray-300 mb-4">Email: support@influencersnepal.com</p>
-            <div className="flex space-x-4">
-              <a href="#" className="hover:scale-110 transition-transform">
-                <Twitter className="h-5 w-5 text-gray-300 hover:text-white" />
-              </a>
-              <a href="#" className="hover:scale-110 transition-transform">
-                <Linkedin className="h-5 w-5 text-gray-300 hover:text-white" />
-              </a>
-              <a href="#" className="hover:scale-110 transition-transform">
+            <ul className="space-y-3">
+              <li className="flex items-center gap-2 text-gray-300">
+                <Phone className="h-4 w-4" />
+                <a href="tel:9840052198" className="hover:text-white transition-colors">
+                  9840052198
+                </a>
+              </li>
+              <li className="flex items-center gap-2 text-gray-300">
+                <Mail className="h-4 w-4" />
+                <a href="mailto:Influencersnepal.np@gmail.com" className="hover:text-white transition-colors">
+                  Influencersnepal.np@gmail.com
+                </a>
+              </li>
+              <li className="flex items-start gap-2 text-gray-300">
+                <MapPin className="h-4 w-4 mt-1" />
+                <span>Gyaneshowr, Kathmandu,<br />Bagmati, Nepal</span>
+              </li>
+            </ul>
+            
+            <div className="flex space-x-4 mt-6">
+              <a 
+                href="https://www.facebook.com/profile.php?id=61572455916555" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:scale-110 transition-transform"
+              >
                 <Facebook className="h-5 w-5 text-gray-300 hover:text-white" />
               </a>
-              <a href="#" className="hover:scale-110 transition-transform">
+              <a 
+                href="https://www.instagram.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:scale-110 transition-transform"
+              >
                 <Instagram className="h-5 w-5 text-gray-300 hover:text-white" />
+              </a>
+              <a 
+                href="https://www.tiktok.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:scale-110 transition-transform"
+              >
+                <TiktokIcon />
+              </a>
+              <a 
+                href="https://www.youtube.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="hover:scale-110 transition-transform"
+              >
+                <Youtube className="h-5 w-5 text-gray-300 hover:text-white" />
               </a>
             </div>
           </div>
